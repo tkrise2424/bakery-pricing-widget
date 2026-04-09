@@ -23,7 +23,7 @@ body{font-family:'Roboto',sans-serif;background:#f4f4f4;color:#0D0D0D;padding:24
 .floor-label{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;color:#fff;
   background:#0D0D0D;padding:7px 18px;border-radius:6px;display:inline-block;margin-bottom:14px}
 
-.units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 
 .unit-card{background:#fff;border-radius:10px;padding:18px 20px;
   border:1.5px solid #e0e0e0;position:relative;overflow:hidden;
@@ -34,30 +34,19 @@ body{font-family:'Roboto',sans-serif;background:#f4f4f4;color:#0D0D0D;padding:24
 
 .card-name{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px}
 .card-badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;
-  border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+  border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
 .badge-avail{background:#e8f5e9;color:#2e7d32}
 .badge-unavail{background:#f0f0f0;color:#686E6E}
 
-.card-details{font-size:.85rem;color:#686E6E;line-height:1.75}
-.card-price{font-family:Arial,sans-serif;font-size:1.4rem;font-weight:700;
-  color:#AF2849;margin-top:12px}
+.card-price{font-family:Arial,sans-serif;font-size:1.4rem;font-weight:700;color:#AF2849}
 .card-price small{font-size:.8rem;font-weight:400;color:#686E6E}
-.card-price-na{font-size:.88rem;color:#686E6E;margin-top:12px;font-style:italic}
-
-.addons{background:#fff;border-radius:10px;padding:22px 26px;
-  border:1.5px solid #e0e0e0;max-width:440px;margin-top:8px}
-.addons h2{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;
-  border-bottom:2px solid #FEB35D;padding-bottom:8px;margin-bottom:12px}
-.addon-row{display:flex;justify-content:space-between;padding:7px 0;
-  border-bottom:1px solid #f0f0f0;font-size:.88rem}
-.addon-row:last-child{border-bottom:none}
-.addon-price{font-weight:600;color:#AF2849}
+.card-price-na{font-size:.88rem;color:#686E6E;font-style:italic}
 
 .last-updated{text-align:center;font-size:.75rem;color:#bbb;margin-top:28px}
 
 @media(max-width:500px){
   .header h1{font-size:1.5rem}
-  .units-grid{grid-template-columns:1fr}
+  .units-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -79,12 +68,6 @@ body{font-family:'Roboto',sans-serif;background:#f4f4f4;color:#0D0D0D;padding:24
 </div>
 
 <div id="floors-container"></div>
-
-<div class="addons">
-  <h2>Optional Add-Ons</h2>
-  <div id="addons-list"></div>
-</div>
-
 <div class="last-updated" id="last-updated"></div>
 
 <script>
@@ -142,14 +125,7 @@ function render() {
       card.className = 'unit-card' + (isAvail ? '' : ' na');
       card.innerHTML =
         '<div class="card-name">' + u.unit + '</div>' +
-        '<span class="card-badge ' + (isAvail ? 'badge-avail' : 'badge-unavail') + '">' + u.status + '</span>' +
-        '<div class="card-details">' +
-          (u.sq_ft ? '<div>&#128208; ' + u.sq_ft.toLocaleString() + ' sq ft</div>' : '') +
-          (u.per_sq_ft ? '<div>&#128178; $' + u.per_sq_ft + ' / sq ft / yr</div>' : '') +
-          (u.fobs > 0 ? '<div>&#128273; ' + u.fobs + ' FOB(s) included</div>' : '') +
-          (u.mailbox > 0 ? '<div>&#128140; Mailbox included</div>' : '') +
-          (u.desks > 0 ? '<div>&#128187; ' + u.desks + ' desk(s) included</div>' : '') +
-        '</div>' +
+        '<span class="card-badge ' + (isAvail ? 'badge-avail' : 'badge-unavail') + '">' + u.status + '</span><br/>' +
         (u.total_monthly
           ? '<div class="card-price">$' + u.total_monthly.toLocaleString() + '<small> / mo</small></div>'
           : '<div class="card-price-na">Pricing on request</div>');
@@ -159,12 +135,6 @@ function render() {
     section.appendChild(grid);
     container.appendChild(section);
   }
-
-  // Add-ons
-  const addonsEl = document.getElementById('addons-list');
-  addonsEl.innerHTML = pricingData.addons.map(a =>
-    '<div class="addon-row"><span>' + a.name + '</span><span class="addon-price">$' + a.monthly + '/mo</span></div>'
-  ).join('');
 
   document.getElementById('last-updated').textContent = 'Last updated: ' + pricingData.last_updated;
   window.parent.postMessage({type:'bakery-height', height: document.body.scrollHeight}, '*');
