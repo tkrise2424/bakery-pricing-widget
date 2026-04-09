@@ -34,11 +34,11 @@ body{font-family:'Roboto',sans-serif;background:#f4f4f4;color:#0D0D0D;padding:24
 
 .card-name{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px}
 .card-badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;
-  border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+  border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
 .badge-avail{background:#e8f5e9;color:#2e7d32}
 .badge-unavail{background:#f0f0f0;color:#686E6E}
 
-.card-sqft{font-size:.85rem;color:#686E6E;margin-bottom:10px}
+.card-sqft{font-size:.88rem;color:#686E6E;margin-bottom:10px}
 .card-price{font-family:Arial,sans-serif;font-size:1.4rem;font-weight:700;color:#AF2849}
 .card-price small{font-size:.8rem;font-weight:400;color:#686E6E}
 .card-price-na{font-size:.88rem;color:#686E6E;font-style:italic}
@@ -126,7 +126,7 @@ function render() {
       card.className = 'unit-card' + (isAvail ? '' : ' na');
       card.innerHTML =
         '<div class="card-name">' + u.unit + '</div>' +
-        '<span class="card-badge ' + (isAvail ? 'badge-avail' : 'badge-unavail') + '">' + u.status + '</span><br/>' +
+        '<span class="card-badge ' + (isAvail ? 'badge-avail' : 'badge-unavail') + '">' + u.status + '</span>' +
         (u.sq_ft ? '<div class="card-sqft">' + u.sq_ft.toLocaleString() + ' sq ft</div>' : '') +
         (u.total_monthly
           ? '<div class="card-price">$' + u.total_monthly.toLocaleString() + '<small> / mo</small></div>'
