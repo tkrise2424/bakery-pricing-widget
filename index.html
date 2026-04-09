@@ -1,331 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Biz Hub Pricing & Availability</title>
+<title>Biz Hub – Pricing & Availability</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;background:#f4f4f4;color:#0D0D0D;padding:24px 16px 48px}
 
-  body {
-    font-family: 'Roboto', sans-serif;
-    background: #f5f5f5;
-    color: #0D0D0D;
-    padding: 24px 16px 48px;
-  }
+/* ── Header ── */
+.header{text-align:center;margin-bottom:28px}
+.header h1{font-family:Arial,sans-serif;font-size:2rem;font-weight:700;color:#AF2849}
+.header p{font-size:.95rem;color:#686E6E;margin-top:6px}
 
-  .widget-header {
-    text-align: center;
-    margin-bottom: 32px;
-  }
+/* ── Tabs ── */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+.tab{font-family:Arial,sans-serif;font-size:.85rem;font-weight:700;padding:8px 22px;
+  border-radius:999px;border:2px solid #AF2849;background:transparent;color:#AF2849;
+  cursor:pointer;transition:all .2s}
+.tab:hover,.tab.active{background:#AF2849;color:#fff}
 
-  .widget-header h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #AF2849;
-    letter-spacing: -0.5px;
-  }
+/* ── Floor plan wrapper ── */
+.floor-section{display:none;margin-bottom:36px}
+.floor-section.visible{display:block}
+.floor-label{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;color:#fff;
+  background:#0D0D0D;padding:7px 18px;border-radius:6px;display:inline-block;margin-bottom:14px}
 
-  .widget-header p {
-    font-size: 0.95rem;
-    color: #686E6E;
-    margin-top: 6px;
-  }
+/* ── Interactive map ── */
+.map-wrap{position:relative;width:100%;max-width:900px;margin:0 auto 28px}
+.map-wrap img{width:100%;height:auto;display:block;border-radius:8px;
+  box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.hotspot{position:absolute;border-radius:4px;cursor:pointer;transition:all .18s;
+  border:2px solid transparent}
+.hotspot.available{background:rgba(175,40,73,.18);border-color:#AF2849}
+.hotspot.unavailable{background:rgba(104,110,110,.15);border-color:#686E6E}
+.hotspot:hover{transform:scale(1.05);z-index:10}
+.hotspot.available:hover{background:rgba(175,40,73,.38)}
+.hotspot.unavailable:hover{background:rgba(104,110,110,.3)}
+.hotspot-label{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
+  font-family:Arial,sans-serif;font-size:.6rem;font-weight:700;
+  color:#fff;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.7);pointer-events:none}
 
-  .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 28px;
-  }
+/* ── Popup ── */
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;
+  align-items:center;justify-content:center}
+.popup-overlay.show{display:flex}
+.popup{background:#fff;border-radius:14px;padding:28px 28px 24px;max-width:380px;width:90%;
+  position:relative;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.popup::before{content:'';display:block;height:5px;background:#AF2849;
+  border-radius:999px;margin-bottom:18px}
+.popup-close{position:absolute;top:14px;right:16px;font-size:1.4rem;cursor:pointer;
+  color:#686E6E;line-height:1}
+.popup-close:hover{color:#AF2849}
+.popup-unit{font-family:Arial,sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.popup-badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 11px;
+  border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.badge-avail{background:#e8f5e9;color:#2e7d32}
+.badge-unavail{background:#f0f0f0;color:#686E6E}
+.popup-details{font-size:.88rem;color:#686E6E;line-height:1.85}
+.popup-details span{color:#0D0D0D;font-weight:500}
+.popup-price{font-family:Arial,sans-serif;font-size:1.6rem;font-weight:700;
+  color:#AF2849;margin-top:14px}
+.popup-price small{font-size:.8rem;font-weight:400;color:#686E6E}
+.popup-price-na{font-size:.9rem;color:#686E6E;margin-top:14px;font-style:italic}
 
-  .filter-btn {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 8px 20px;
-    border-radius: 999px;
-    border: 2px solid #AF2849;
-    background: transparent;
-    color: #AF2849;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
+/* ── Unit grid (fallback / non-floor-plan floors) ── */
+.units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;
+  max-width:900px;margin:0 auto}
+.unit-card{background:#fff;border-radius:10px;padding:16px 18px;border:1.5px solid #e0e0e0;
+  position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.unit-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.09)}
+.unit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#AF2849}
+.unit-card.na::before{background:#686E6E}
+.card-name{font-family:Arial,sans-serif;font-size:.95rem;font-weight:700;margin-bottom:8px}
+.card-badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 9px;
+  border-radius:999px;text-transform:uppercase;margin-bottom:10px}
+.card-details{font-size:.82rem;color:#686E6E;line-height:1.7}
+.card-price{font-family:Arial,sans-serif;font-size:1.25rem;font-weight:700;
+  color:#AF2849;margin-top:10px}
+.card-price small{font-size:.75rem;font-weight:400;color:#686E6E}
+.card-price-na{font-size:.85rem;color:#686E6E;margin-top:10px;font-style:italic}
 
-  .filter-btn:hover, .filter-btn.active {
-    background: #AF2849;
-    color: #fff;
-  }
+/* ── Add-ons ── */
+.addons{background:#fff;border-radius:10px;padding:22px 26px;border:1.5px solid #e0e0e0;
+  max-width:440px;margin:32px auto 0}
+.addons h2{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;
+  border-bottom:2px solid #FEB35D;padding-bottom:8px;margin-bottom:12px}
+.addon-row{display:flex;justify-content:space-between;padding:7px 0;
+  border-bottom:1px solid #f0f0f0;font-size:.88rem}
+.addon-row:last-child{border-bottom:none}
+.addon-price{font-weight:600;color:#AF2849}
 
-  .floor-section {
-    margin-bottom: 36px;
-  }
+.last-updated{text-align:center;font-size:.75rem;color:#bbb;margin-top:24px}
 
-  .floor-label {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-    background: #0D0D0D;
-    padding: 8px 20px;
-    border-radius: 6px;
-    display: inline-block;
-    margin-bottom: 14px;
-  }
-
-  .units-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px;
-  }
-
-  .unit-card {
-    background: #fff;
-    border-radius: 10px;
-    padding: 18px 20px;
-    border: 1.5px solid #e0e0e0;
-    transition: transform 0.15s, box-shadow 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .unit-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.09);
-  }
-
-  .unit-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: #AF2849;
-  }
-
-  .unit-card.not-available::before {
-    background: #686E6E;
-  }
-
-  .unit-name {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #0D0D0D;
-    margin-bottom: 10px;
-  }
-
-  .unit-badge {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .badge-available {
-    background: #e8f5e9;
-    color: #2e7d32;
-  }
-
-  .badge-unavailable {
-    background: #f0f0f0;
-    color: #686E6E;
-  }
-
-  .unit-details {
-    font-size: 0.85rem;
-    color: #686E6E;
-    line-height: 1.7;
-  }
-
-  .unit-price {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #AF2849;
-    margin-top: 12px;
-  }
-
-  .unit-price span {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #686E6E;
-  }
-
-  .unit-price-na {
-    font-size: 0.9rem;
-    color: #686E6E;
-    margin-top: 12px;
-    font-style: italic;
-  }
-
-  .addons-section {
-    margin-top: 40px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 24px 28px;
-    border: 1.5px solid #e0e0e0;
-    max-width: 480px;
-  }
-
-  .addons-section h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #0D0D0D;
-    margin-bottom: 14px;
-    border-bottom: 2px solid #FEB35D;
-    padding-bottom: 8px;
-  }
-
-  .addon-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 0.9rem;
-  }
-
-  .addon-row:last-child { border-bottom: none; }
-  .addon-name { color: #0D0D0D; }
-  .addon-price { font-weight: 600; color: #AF2849; }
-
-  .last-updated {
-    text-align: center;
-    font-size: 0.78rem;
-    color: #aaa;
-    margin-top: 32px;
-  }
-
-  @media (max-width: 480px) {
-    .widget-header h1 { font-size: 1.5rem; }
-    .units-grid { grid-template-columns: 1fr; }
-  }
+@media(max-width:520px){
+  .header h1{font-size:1.5rem}
+  .hotspot-label{font-size:.5rem}
+}
 </style>
 </head>
 <body>
 
-<div class="widget-header">
+<div class="header">
   <h1>Pricing &amp; Availability</h1>
   <p>901 S 15th St. &mdash; Biz Hub</p>
 </div>
 
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filterFloor('all', this)">All Floors</button>
-  <button class="filter-btn" onclick="filterFloor('1', this)">Floor 1</button>
-  <button class="filter-btn" onclick="filterFloor('2', this)">Floor 2</button>
-  <button class="filter-btn" onclick="filterFloor('3', this)">Floor 3</button>
-  <button class="filter-btn" onclick="filterFloor('4', this)">Floor 4</button>
-  <button class="filter-btn" onclick="filterFloor('Lot', this)">Lot</button>
-  <button class="filter-btn" onclick="filterAvailable(this)">Available Only</button>
+<div class="tabs">
+  <button class="tab active" onclick="showFloor('1',this)">Floor 1</button>
+  <button class="tab" onclick="showFloor('2',this)">Floor 2</button>
+  <button class="tab" onclick="showFloor('3',this)">Floor 3</button>
+  <button class="tab" onclick="showFloor('4',this)">Floor 4</button>
+  <button class="tab" onclick="showFloor('Lot',this)">Lot</button>
 </div>
 
-<div id="floors-container"></div>
+<div id="floor-1" class="floor-section visible">
+  <div class="floor-label">Floor 1</div>
+  <div class="map-wrap" id="map-1">
+    <img src="floor1.jpg" alt="Floor 1 Plan" id="img-1" onload="drawHotspots('1')"/>
+  </div>
+</div>
 
-<div class="addons-section">
+<div id="floor-2" class="floor-section">
+  <div class="floor-label">Floor 2</div>
+  <div class="units-grid" id="grid-2"></div>
+</div>
+
+<div id="floor-3" class="floor-section">
+  <div class="floor-label">Floor 3</div>
+  <div class="map-wrap" id="map-3">
+    <img src="floor3.jpg" alt="Floor 3 Plan" id="img-3" onload="drawHotspots('3')"/>
+  </div>
+</div>
+
+<div id="floor-4" class="floor-section">
+  <div class="floor-label">Floor 4</div>
+  <div class="units-grid" id="grid-4"></div>
+</div>
+
+<div id="floor-Lot" class="floor-section">
+  <div class="floor-label">Outdoor / Lot</div>
+  <div class="units-grid" id="grid-Lot"></div>
+</div>
+
+<div class="addons">
   <h2>Optional Add-Ons</h2>
-  <div id="addons-container"></div>
+  <div id="addons-list"></div>
 </div>
 
 <div class="last-updated" id="last-updated"></div>
 
+<!-- Popup -->
+<div class="popup-overlay" id="popup-overlay" onclick="closePopup(event)">
+  <div class="popup" id="popup">
+    <span class="popup-close" onclick="closePopupDirect()">&times;</span>
+    <div class="popup-unit" id="p-unit"></div>
+    <span class="popup-badge" id="p-badge"></span>
+    <div class="popup-details" id="p-details"></div>
+    <div id="p-price"></div>
+  </div>
+</div>
+
 <script>
-const DATA_URL = 'pricing.json';
+// ── Hotspot definitions (% of image dimensions) ──
+// These were mapped from the actual floor plan images
+const HOTSPOTS = {
+  '1': [
+    {unit:'Unit 100', x:3.5,  y:7,   w:11, h:24},
+    {unit:'Unit 105', x:15.5, y:7,   w:11, h:24},
+    {unit:'Unit 110', x:27.5, y:7,   w:11, h:24},
+    {unit:'Unit 115', x:39.5, y:7,   w:11, h:24},
+    {unit:'Unit 120', x:51.5, y:7,   w:11, h:24},
+    {unit:'Unit 125', x:3.5,  y:35,  w:11, h:24},
+    {unit:'Unit 130', x:15.5, y:35,  w:11, h:24},
+    {unit:'Unit 135', x:27.5, y:35,  w:11, h:24},
+    {unit:'Unit 140', x:39.5, y:35,  w:11, h:24},
+    {unit:'Unit 142', x:51.5, y:35,  w:11, h:24},
+    {unit:'Unit 145', x:3.5,  y:63,  w:11, h:24},
+    {unit:'Unit 150', x:15.5, y:63,  w:11, h:24},
+    {unit:'Unit 155', x:27.5, y:63,  w:11, h:24},
+    {unit:'Unit 160', x:39.5, y:63,  w:11, h:24},
+    {unit:'Unit 165', x:51.5, y:63,  w:11, h:24},
+  ],
+  '3': [
+    {unit:'Unit 305',   x:2,   y:5,  w:13, h:28},
+    {unit:'Unit 310',   x:16,  y:5,  w:9,  h:28},
+    {unit:'Unit 315',   x:26,  y:5,  w:9,  h:28},
+    {unit:'Unit 320',   x:36,  y:5,  w:10, h:28},
+    {unit:'Unit 325',   x:47,  y:5,  w:10, h:28},
+    {unit:'Unit 326',   x:58,  y:5,  w:7,  h:28},
+    {unit:'Unit 327',   x:66,  y:5,  w:7,  h:28},
+    {unit:'Unit 330 W', x:74,  y:5,  w:11, h:28},
+    {unit:'Unit 335',   x:2,   y:38, w:12, h:26},
+    {unit:'Unit 340',   x:15,  y:38, w:12, h:26},
+    {unit:'Unit 345',   x:28,  y:38, w:13, h:26},
+    {unit:'Unit 350 W', x:42,  y:38, w:13, h:26},
+    {unit:'Unit 355 W', x:56,  y:38, w:9,  h:26},
+    {unit:'Unit 360 W', x:66,  y:38, w:8,  h:26},
+    {unit:'Unit 365 W', x:75,  y:38, w:8,  h:26},
+    {unit:'Unit 370',   x:2,   y:68, w:24, h:27},
+    {unit:'Unit 375 W', x:27,  y:68, w:12, h:27},
+    {unit:'Unit 380 W', x:40,  y:68, w:20, h:27},
+  ]
+};
+
 let pricingData = null;
-let currentFloor = 'all';
-let availableOnly = false;
 
-async function loadData() {
-  const res = await fetch(DATA_URL + '?v=' + Date.now());
+async function init() {
+  const res = await fetch('pricing.json?v=' + Date.now());
   pricingData = await res.json();
-  render();
+  drawHotspots('1');
+  renderGrid('2');
+  renderGrid('4');
+  renderGrid('Lot');
+  renderAddons();
+  document.getElementById('last-updated').textContent = 'Last updated: ' + pricingData.last_updated;
+  notifyHeight();
 }
 
-function filterFloor(floor, btn) {
-  currentFloor = floor;
-  availableOnly = false;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  render();
+function getUnit(unitName) {
+  for (const units of Object.values(pricingData.floors)) {
+    const found = units.find(u => u.unit === unitName);
+    if (found) return found;
+  }
+  return null;
 }
 
-function filterAvailable(btn) {
-  availableOnly = !availableOnly;
-  currentFloor = 'all';
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.toggle('active', availableOnly);
-  render();
+function drawHotspots(floor) {
+  if (!pricingData) return;
+  const mapEl = document.getElementById('map-' + floor);
+  const imgEl = document.getElementById('img-' + floor);
+  if (!mapEl || !imgEl) return;
+
+  // Remove existing hotspots
+  mapEl.querySelectorAll('.hotspot').forEach(h => h.remove());
+
+  const spots = HOTSPOTS[floor] || [];
+  spots.forEach(spot => {
+    const unit = getUnit(spot.unit);
+    const isAvail = unit && unit.status === 'Available';
+
+    const el = document.createElement('div');
+    el.className = 'hotspot ' + (isAvail ? 'available' : 'unavailable');
+    el.style.left   = spot.x + '%';
+    el.style.top    = spot.y + '%';
+    el.style.width  = spot.w + '%';
+    el.style.height = spot.h + '%';
+    el.title = spot.unit;
+
+    const lbl = document.createElement('div');
+    lbl.className = 'hotspot-label';
+    lbl.textContent = spot.unit.replace('Unit ', '');
+    el.appendChild(lbl);
+
+    el.addEventListener('click', () => openPopup(spot.unit));
+    mapEl.appendChild(el);
+  });
 }
 
-function fmt(n) {
-  return n ? '$' + n.toLocaleString() : null;
-}
+function openPopup(unitName) {
+  const unit = getUnit(unitName);
+  if (!unit) return;
 
-function render() {
-  const container = document.getElementById('floors-container');
-  container.innerHTML = '';
+  document.getElementById('p-unit').textContent = unit.unit;
 
-  const floorLabels = { '1': 'Floor 1', '2': 'Floor 2', '3': 'Floor 3', '4': 'Floor 4', 'Lot': 'Outdoor / Lot' };
+  const badge = document.getElementById('p-badge');
+  badge.textContent = unit.status;
+  badge.className = 'popup-badge ' + (unit.status === 'Available' ? 'badge-avail' : 'badge-unavail');
 
-  for (const [floorKey, units] of Object.entries(pricingData.floors)) {
-    if (currentFloor !== 'all' && currentFloor !== floorKey) continue;
+  let details = '';
+  if (unit.sq_ft) details += '<div>&#128208; <span>' + unit.sq_ft.toLocaleString() + ' sq ft</span></div>';
+  if (unit.per_sq_ft) details += '<div>&#128178; <span>$' + unit.per_sq_ft + ' / sq ft / yr</span></div>';
+  if (unit.fobs > 0) details += '<div>&#128273; <span>' + unit.fobs + ' FOB(s) included</span></div>';
+  if (unit.mailbox > 0) details += '<div>&#128140; <span>Mailbox included</span></div>';
+  if (unit.desks > 0) details += '<div>&#128187; <span>' + unit.desks + ' desk(s) included</span></div>';
+  document.getElementById('p-details').innerHTML = details;
 
-    let filtered = availableOnly ? units.filter(u => u.status === 'Available') : units;
-    if (filtered.length === 0) continue;
-
-    const section = document.createElement('div');
-    section.className = 'floor-section';
-    section.dataset.floor = floorKey;
-    section.innerHTML = '<div class="floor-label">' + (floorLabels[floorKey] || 'Floor ' + floorKey) + '</div>';
-
-    const grid = document.createElement('div');
-    grid.className = 'units-grid';
-
-    filtered.forEach(unit => {
-      const isAvail = unit.status === 'Available';
-      const card = document.createElement('div');
-      card.className = 'unit-card' + (isAvail ? '' : ' not-available');
-      const price = unit.total_monthly ?
-        '<div class="unit-price">' + fmt(unit.total_monthly) + '<span> / mo</span></div>' :
-        '<div class="unit-price-na">Pricing on request</div>';
-
-      card.innerHTML =
-        '<div class="unit-name">' + unit.unit + '</div>' +
-        '<span class="unit-badge ' + (isAvail ? 'badge-available' : 'badge-unavailable') + '">' + unit.status + '</span>' +
-        '<div class="unit-details">' +
-        (unit.sq_ft ? '<div>&#128208; ' + unit.sq_ft.toLocaleString() + ' sq ft</div>' : '') +
-        (unit.per_sq_ft ? '<div>&#128178; $' + unit.per_sq_ft + '/sq ft/yr</div>' : '') +
-        (unit.fobs > 0 ? '<div>&#128273; ' + unit.fobs + ' FOB(s) included</div>' : '') +
-        (unit.mailbox > 0 ? '<div>&#128140; Mailbox included</div>' : '') +
-        (unit.desks > 0 ? '<div>&#128187; ' + unit.desks + ' desk(s) included</div>' : '') +
-        '</div>' + price;
-
-      grid.appendChild(card);
-    });
-
-    section.appendChild(grid);
-    container.appendChild(section);
+  const priceEl = document.getElementById('p-price');
+  if (unit.total_monthly) {
+    priceEl.innerHTML = '<div class="popup-price">$' + unit.total_monthly.toLocaleString() + '<small> / mo</small></div>';
+  } else {
+    priceEl.innerHTML = '<div class="popup-price-na">Pricing on request</div>';
   }
 
-  const addonsContainer = document.getElementById('addons-container');
-  addonsContainer.innerHTML = '';
-  pricingData.addons.forEach(a => {
-    addonsContainer.innerHTML +=
-      '<div class="addon-row"><span class="addon-name">' + a.name + '</span><span class="addon-price">$' + a.monthly + '/mo</span></div>';
-  });
-
-  document.getElementById('last-updated').textContent = 'Last updated: ' + pricingData.last_updated;
-  window.parent.postMessage({ type: 'bakery-height', height: document.body.scrollHeight }, '*');
+  document.getElementById('popup-overlay').classList.add('show');
 }
 
-loadData();
+function closePopup(e) {
+  if (e.target === document.getElementById('popup-overlay')) closePopupDirect();
+}
+function closePopupDirect() {
+  document.getElementById('popup-overlay').classList.remove('show');
+}
+
+function renderGrid(floor) {
+  if (!pricingData) return;
+  const el = document.getElementById('grid-' + floor);
+  if (!el) return;
+  const units = pricingData.floors[floor] || [];
+  el.innerHTML = units.map(u => {
+    const isAvail = u.status === 'Available';
+    const price = u.total_monthly
+      ? '<div class="card-price">$' + u.total_monthly.toLocaleString() + '<small> / mo</small></div>'
+      : '<div class="card-price-na">Pricing on request</div>';
+    const badgeCls = isAvail ? 'badge-avail' : 'badge-unavail';
+    return '<div class="unit-card ' + (isAvail ? '' : 'na') + '">' +
+      '<div class="card-name">' + u.unit + '</div>' +
+      '<span class="card-badge ' + badgeCls + '">' + u.status + '</span>' +
+      '<div class="card-details">' +
+        (u.sq_ft ? '<div>&#128208; ' + u.sq_ft.toLocaleString() + ' sq ft</div>' : '') +
+        (u.per_sq_ft ? '<div>&#128178; $' + u.per_sq_ft + '/sq ft/yr</div>' : '') +
+      '</div>' + price + '</div>';
+  }).join('');
+}
+
+function renderAddons() {
+  const el = document.getElementById('addons-list');
+  el.innerHTML = pricingData.addons.map(a =>
+    '<div class="addon-row"><span>' + a.name + '</span><span class="addon-price">$' + a.monthly + '/mo</span></div>'
+  ).join('');
+}
+
+function showFloor(floor, btn) {
+  document.querySelectorAll('.floor-section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('floor-' + floor).classList.add('visible');
+  btn.classList.add('active');
+  if (HOTSPOTS[floor]) drawHotspots(floor);
+  notifyHeight();
+}
+
+function notifyHeight() {
+  setTimeout(() => {
+    window.parent.postMessage({type:'bakery-height', height: document.body.scrollHeight}, '*');
+  }, 100);
+}
+
+init();
 </script>
 </body>
 </html>
