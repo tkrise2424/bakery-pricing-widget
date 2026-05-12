@@ -12,14 +12,25 @@ def mround(value, multiple):
     if not multiple: return value
     return round(value / multiple) * multiple
 
+def to_float(val):
+    """Safely convert a cell value to float, stripping any text formatting."""
+    if val is None:
+        return None
+    try:
+        return float(str(val).replace("$", "").replace(",", "").strip())
+    except (ValueError, TypeError):
+        return None
+
 def calc_unit(unit, status, floor, blocks, per_sq_ft, fobs=0, mailbox=0, desks=0):
-    if not blocks: return None
+    blocks = to_float(blocks)
+    per_sq_ft = to_float(per_sq_ft)
+    if not blocks or per_sq_ft is None: return None
     sq_ft = mround(blocks * 440, 10)
     yearly = sq_ft * per_sq_ft
     monthly = mround(yearly / 12, 25)
-    fob_cost = (fobs or 0) * 15
-    mailbox_cost = mailbox or 0
-    desk_cost = (desks or 0) * 250
+    fob_cost = (to_float(fobs) or 0) * 15
+    mailbox_cost = to_float(mailbox) or 0
+    desk_cost = (to_float(desks) or 0) * 250
     total_monthly = monthly + fob_cost + mailbox_cost + desk_cost
     return {
         "unit": unit,
@@ -28,9 +39,9 @@ def calc_unit(unit, status, floor, blocks, per_sq_ft, fobs=0, mailbox=0, desks=0
         "sq_ft": int(sq_ft),
         "per_sq_ft": per_sq_ft,
         "monthly": int(monthly),
-        "fobs": fobs or 0,
+        "fobs": to_float(fobs) or 0,
         "mailbox": mailbox_cost,
-        "desks": desks or 0,
+        "desks": to_float(desks) or 0,
         "total_monthly": int(total_monthly)
     }
 
