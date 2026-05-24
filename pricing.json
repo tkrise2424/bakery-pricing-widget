@@ -2,152 +2,70 @@
   "last_updated": "2026-05-24",
   "property": "901 S 15th St.",
   "floors": {
-    "1": [],
-    "2": [],
-    "3": [],
+    "1": [
+      {"unit": "Unit 100", "status": "Available", "floor": 1, "sq_ft": 440, "per_sq_ft": 1.08, "monthly": 475, "total_monthly": 475},
+      {"unit": "Unit 105", "status": "Not Available", "floor": 1, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 110", "status": "Available", "floor": 1, "sq_ft": 880, "per_sq_ft": 0.99, "monthly": 875, "total_monthly": 875},
+      {"unit": "Unit 115", "status": "Available", "floor": 1, "sq_ft": 660, "per_sq_ft": 1.10, "monthly": 725, "total_monthly": 725},
+      {"unit": "Unit 120", "status": "Available", "floor": 1, "sq_ft": 660, "per_sq_ft": 1.10, "monthly": 725, "total_monthly": 725},
+      {"unit": "Unit 125", "status": "Available", "floor": 1, "sq_ft": 880, "per_sq_ft": 0.99, "monthly": 875, "total_monthly": 875},
+      {"unit": "Unit 130", "status": "Available", "floor": 1, "sq_ft": 880, "per_sq_ft": 0.99, "monthly": 875, "total_monthly": 875},
+      {"unit": "Unit 135", "status": "Available", "floor": 1, "sq_ft": 880, "per_sq_ft": 0.99, "monthly": 875, "total_monthly": 875},
+      {"unit": "Unit 140", "status": "Available", "floor": 1, "sq_ft": 440, "per_sq_ft": 1.08, "monthly": 475, "total_monthly": 475},
+      {"unit": "Unit 141", "status": "Available", "floor": 1, "sq_ft": 440, "per_sq_ft": 1.08, "monthly": 475, "total_monthly": 475},
+      {"unit": "Unit 145", "status": "Available", "floor": 1, "sq_ft": 770, "per_sq_ft": 1.01, "monthly": 775, "total_monthly": 775},
+      {"unit": "Unit 150", "status": "Available", "floor": 1, "sq_ft": 1320, "per_sq_ft": 1.00, "monthly": 1325, "total_monthly": 1325},
+      {"unit": "Unit 155", "status": "Available", "floor": 1, "sq_ft": 1100, "per_sq_ft": 1.00, "monthly": 1100, "total_monthly": 1100},
+      {"unit": "Unit 160", "status": "Available", "floor": 1, "sq_ft": 880, "per_sq_ft": 0.99, "monthly": 875, "total_monthly": 875},
+      {"unit": "Unit 165", "status": "Available", "floor": 1, "sq_ft": 880, "per_sq_ft": 0.99, "monthly": 875, "total_monthly": 875}
+    ],
+    "2": [
+      {"unit": "Unit 205 - Private Office", "status": "Available", "floor": 2, "sq_ft": 1100, "per_sq_ft": 1.00, "monthly": 1100, "total_monthly": 1100},
+      {"unit": "Unit 210", "status": "Not Available", "floor": 2, "sq_ft": 22880, "per_sq_ft": 0.25, "monthly": 5725, "total_monthly": 5725},
+      {"unit": "Unit 215", "status": "Not Available", "floor": 2, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null}
+    ],
+    "3": [
+      {"unit": "Unit 305", "status": "Available", "floor": 3, "sq_ft": 1100, "per_sq_ft": 0.84, "monthly": 925, "total_monthly": 925},
+      {"unit": "Unit 310", "status": "Available", "floor": 3, "sq_ft": 660, "per_sq_ft": 0.83, "monthly": 550, "total_monthly": 550},
+      {"unit": "Unit 315", "status": "Available", "floor": 3, "sq_ft": 660, "per_sq_ft": 0.83, "monthly": 550, "total_monthly": 550},
+      {"unit": "Unit 320", "status": "Available", "floor": 3, "sq_ft": 880, "per_sq_ft": 0.82, "monthly": 725, "total_monthly": 725},
+      {"unit": "Unit 325", "status": "Available", "floor": 3, "sq_ft": 880, "per_sq_ft": 0.82, "monthly": 725, "total_monthly": 725},
+      {"unit": "Unit 326", "status": "Available", "floor": 3, "sq_ft": 310, "per_sq_ft": 0.81, "monthly": 250, "total_monthly": 250},
+      {"unit": "Unit 327", "status": "Available", "floor": 3, "sq_ft": 310, "per_sq_ft": 0.81, "monthly": 250, "total_monthly": 250},
+      {"unit": "Unit 330 W", "status": "Not Available", "floor": 3, "sq_ft": 880, "per_sq_ft": 1.25, "monthly": 1100, "total_monthly": 1100},
+      {"unit": "Unit 335", "status": "Not Available", "floor": 3, "sq_ft": 880, "per_sq_ft": 0.82, "monthly": 725, "total_monthly": 725},
+      {"unit": "Unit 340", "status": "Not Available", "floor": 3, "sq_ft": 880, "per_sq_ft": 0.82, "monthly": 725, "total_monthly": 725},
+      {"unit": "Unit 345", "status": "Available", "floor": 3, "sq_ft": 1320, "per_sq_ft": 0.83, "monthly": 1100, "total_monthly": 1100},
+      {"unit": "Unit 350 W", "status": "Available", "floor": 3, "sq_ft": 1320, "per_sq_ft": 1.25, "monthly": 1650, "total_monthly": 1650},
+      {"unit": "Unit 355 W", "status": "Available", "floor": 3, "sq_ft": 770, "per_sq_ft": 1.27, "monthly": 975, "total_monthly": 975},
+      {"unit": "Unit 360 W", "status": "Available", "floor": 3, "sq_ft": 590, "per_sq_ft": 1.27, "monthly": 750, "total_monthly": 750},
+      {"unit": "Unit 365 W", "status": "Available", "floor": 3, "sq_ft": 440, "per_sq_ft": 1.25, "monthly": 550, "total_monthly": 550},
+      {"unit": "Unit 370", "status": "Available", "floor": 3, "sq_ft": 3520, "per_sq_ft": 0.75, "monthly": 2650, "total_monthly": 2650},
+      {"unit": "Unit 375 W", "status": "Available", "floor": 3, "sq_ft": 880, "per_sq_ft": 1.25, "monthly": 1100, "total_monthly": 1100},
+      {"unit": "Unit 380 W", "status": "Available", "floor": 3, "sq_ft": 2200, "per_sq_ft": 1.08, "monthly": 2375, "total_monthly": 2375}
+    ],
     "4": [
-      {
-        "unit": "Unit 405",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 410",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 415",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 420",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 425",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 430",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 435",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 440",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 445",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 450",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 455",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 460",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      }
+      {"unit": "Unit 405", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 410", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 415", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 420", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 425", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 430", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 435", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 440", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 445", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 450", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 455", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null},
+      {"unit": "Unit 460", "status": "Not Available", "floor": 4, "sq_ft": null, "per_sq_ft": null, "monthly": null, "total_monthly": null}
     ],
     "Lot": [
-      {
-        "unit": "Parking Lot Storage",
-        "status": "Available",
-        "floor": "Lot",
-        "sq_ft": 8000,
-        "per_sq_ft": 1,
-        "monthly": 667,
-        "total_monthly": 667
-      },
-      {
-        "unit": "Stand Alone Warehouse/Workshop",
-        "status": "Available",
-        "floor": "Lot",
-        "sq_ft": 3000,
-        "per_sq_ft": 7,
-        "monthly": 1750,
-        "total_monthly": 1750
-      }
+      {"unit": "Parking Lot Storage", "status": "Available", "floor": "Lot", "sq_ft": 8000, "per_sq_ft": 0.08, "monthly": 667, "total_monthly": 667},
+      {"unit": "Stand Alone Warehouse/Workshop", "status": "Available", "floor": "Lot", "sq_ft": 3000, "per_sq_ft": 0.75, "monthly": 2250, "total_monthly": 2250}
     ]
   },
   "addons": [
-    {
-      "name": "Extra FOB",
-      "monthly": 20
-    },
-    {
-      "name": "Personal Desk",
-      "monthly": 250
-    },
-    {
-      "name": "Mailbox",
-      "monthly": 25
-    }
+    {"name": "Extra FOB", "monthly": 20},
+    {"name": "Personal Desk", "monthly": 250},
+    {"name": "Mailbox", "monthly": 25}
   ]
 }
