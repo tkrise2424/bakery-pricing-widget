@@ -1,16 +1,16 @@
 import requests
-import openpyxl
+import csv
 import json
-from io import BytesIO
+from io import StringIO
 from datetime import date
 
 FILE_ID = "1Ij8A3RI_UYVBfFB3YbXH6uKdXrAg3voG32LzN2pkGz8"
 SHEET_GID = "10544563"  # Publish Pricing tab
-EXPORT_URL = f"https://docs.google.com/spreadsheets/d/{FILE_ID}/export?format=xlsx&gid={SHEET_GID}"
+CSV_URL = f"https://docs.google.com/spreadsheets/d/{FILE_ID}/export?format=csv&gid={SHEET_GID}"
 
 def to_float(val):
     """Safely convert a cell value to float, stripping any text formatting."""
-    if val is None:
+    if val is None or val == "":
         return None
     try:
         return float(str(val).replace("$", "").replace(",", "").strip())
@@ -23,7 +23,7 @@ def to_int(val):
 
 def parse_floor(val):
     """Parse floor value - returns int for numeric floors, 'Lot' for lot items."""
-    if val is None:
+    if val is None or val == "":
         return None
     s = str(val).strip()
     if s.lower() == "lot":
@@ -33,28 +33,27 @@ def parse_floor(val):
     except (ValueError, TypeError):
         return s
 
-print("Downloading spreadsheet...")
-resp = requests.get(EXPORT_URL)
+print("Downloading CSV...")
+resp = requests.get(CSV_URL)
 resp.raise_for_status()
-wb = openpyxl.load_workbook(BytesIO(resp.content))
-ws = wb.active
-print("Sheet:", ws.title)
 
-rows = list(ws.iter_rows(values_only=True))
+reader = csv.reader(resp.text.splitlines())
+rows = list(reader)
+print(f"Got {len(rows)} rows")
 
-# Parse units from Publish Pricing tab
-# Data rows: Col A=unit name, Col B=status, Col C=floor, Col D=sq ft, Col E=monthly
-# Sections are separated by repeated header rows ['', 'Status', 'Floor', 'Sq ft', 'Monthly']
+# Debug: print first 5 rows
+for i, r in enumerate(rows[:5]):
+    print(f"  Row {i}: {r}")
 
 units_by_floor = {}
 lot_items = []
 
 for row in rows:
-    if row is None or len(row) == 0:
+    if not row or len(row) < 2:
         continue
 
-    col_a = str(row[0]).strip() if row[0] is not None else ""
-    col_b = str(row[1]).strip() if len(row) > 1 and row[1] is not None else ""
+    col_a = str(row[0]).strip() if row[0] else ""
+    col_b = str(row[1]).strip() if len(row) > 1 and row[1] else ""
     col_c = row[2] if len(row) > 2 else None
     col_d = row[3] if len(row) > 3 else None
     col_e = row[4] if len(row) > 4 else None
@@ -72,7 +71,7 @@ for row in rows:
         continue
 
     # Only process unit rows
-    if not (col_a.startswith("Unit") or col_a in ("Parking Lot Storage", "Stand Alone warehouse/workshop")):
+    if not (col_a.startswith("Unit") or col_a.lower().startswith("parking") or col_a.lower().startswith("stand")):
         continue
 
     is_avail = col_b.lower() in ("avail", "available")
@@ -90,9 +89,11 @@ for row in rows:
         "total_monthly": monthly
     }
 
+    print(f"  Parsed: {unit['unit']} | {unit['status']} | floor={unit['floor']} | sq_ft={unit['sq_ft']} | ${unit['monthly']}")
+
     if floor_key == "Lot":
         lot_items.append(unit)
-    else:
+    elif floor_key is not None:
         floor_str = str(floor_key)
         if floor_str not in units_by_floor:
             units_by_floor[floor_str] = []
@@ -100,22 +101,22 @@ for row in rows:
 
 # Parse addons from the bottom of the sheet
 addons = []
-capture_addons = False
+capture = False
 for row in rows:
-    if row is None or len(row) == 0:
+    if not row:
         continue
-    col_a = str(row[0]).strip() if row[0] is not None else ""
-    col_b = str(row[1]).strip() if len(row) > 1 and row[1] is not None else ""
+    col_a = str(row[0]).strip() if row[0] else ""
+    col_b = str(row[1]).strip() if len(row) > 1 and row[1] else ""
 
     if col_b == "Monthly":
-        capture_addons = True
+        capture = True
         continue
 
-    if capture_addons and col_a in ("Extra FOB", "Personal Desk", "Mailbox"):
+    if capture and col_a in ("Extra FOB", "Personal Desk", "Mailbox"):
         monthly = to_int(row[4]) if len(row) > 4 else None
         addons.append({"name": col_a, "monthly": monthly})
 
-# Fallback addons if not parsed
+# Fallback addons
 if not addons:
     addons = [
         {"name": "Extra FOB", "monthly": 20},
@@ -126,11 +127,7 @@ if not addons:
 # Build floors dict
 floors = {}
 for fk in ["1", "2", "3", "4"]:
-    if fk in units_by_floor:
-        floors[fk] = units_by_floor[fk]
-    else:
-        floors[fk] = []
-
+    floors[fk] = units_by_floor.get(fk, [])
 if lot_items:
     floors["Lot"] = lot_items
 
@@ -140,6 +137,9 @@ pricing = {
     "floors": floors,
     "addons": addons
 }
+
+print(f"\nFloor counts: { {k: len(v) for k, v in floors.items()} }")
+print(f"Addons: {addons}")
 
 with open("pricing.json", "w") as f:
     json.dump(pricing, f, indent=2)
