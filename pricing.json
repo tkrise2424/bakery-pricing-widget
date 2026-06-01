@@ -466,15 +466,15 @@
   "addons": [
     {
       "name": "Extra FOB",
-      "monthly": null
+      "monthly": 20
     },
     {
       "name": "Personal Desk",
-      "monthly": null
+      "monthly": 250
     },
     {
       "name": "Mailbox",
-      "monthly": null
+      "monthly": 25
     }
   ]
 }
