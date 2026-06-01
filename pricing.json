@@ -5,149 +5,20 @@
     "1": [],
     "2": [],
     "3": [],
-    "4": [
-      {
-        "unit": "Unit 405",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 410",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 415",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 420",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 425",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 430",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 435",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 440",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 445",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 450",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 455",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      },
-      {
-        "unit": "Unit 460",
-        "status": "Not Available",
-        "floor": 4,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
-      }
-    ],
-    "Lot": [
-      {
-        "unit": "Parking Lot Storage",
-        "status": "Available",
-        "floor": "Lot",
-        "sq_ft": 8000,
-        "per_sq_ft": 1,
-        "monthly": 667,
-        "total_monthly": 667
-      },
-      {
-        "unit": "Stand Alone Warehouse/Workshop",
-        "status": "Available",
-        "floor": "Lot",
-        "sq_ft": 3000,
-        "per_sq_ft": 7,
-        "monthly": 1750,
-        "total_monthly": 1750
-      }
-    ]
+    "4": []
   },
   "addons": [
     {
       "name": "Extra FOB",
-      "monthly": 20
+      "monthly": null
     },
     {
       "name": "Personal Desk",
-      "monthly": 250
+      "monthly": null
     },
     {
       "name": "Mailbox",
-      "monthly": 25
+      "monthly": null
     }
   ]
 }
