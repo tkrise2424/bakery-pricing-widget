@@ -61,10 +61,10 @@
         "unit": "Unit 135",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 880,
+        "sq_ft": 1010,
         "per_sq_ft": null,
-        "monthly": 875,
-        "total_monthly": 875
+        "monthly": 1000,
+        "total_monthly": 1000
       },
       {
         "unit": "Unit 140",
