@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-25",
+  "last_updated": "2026-06-26",
   "property": "901 S 15th St.",
   "floors": {
     "1": [
@@ -11,15 +11,6 @@
         "per_sq_ft": null,
         "monthly": 475,
         "total_monthly": 475
-      },
-      {
-        "unit": "Unit 105",
-        "status": "Not Available",
-        "floor": 1,
-        "sq_ft": null,
-        "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
       },
       {
         "unit": "Unit 110",
@@ -454,12 +445,12 @@
       },
       {
         "unit": "Stand Alone warehouse/workshop",
-        "status": "Available",
+        "status": "Not Available",
         "floor": "Lot",
         "sq_ft": 3000,
         "per_sq_ft": null,
-        "monthly": 2250,
-        "total_monthly": 2250
+        "monthly": 1500,
+        "total_monthly": 1500
       }
     ]
   },
