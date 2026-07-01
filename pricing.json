@@ -97,10 +97,10 @@
         "unit": "Unit 150",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 1320,
+        "sq_ft": 660,
         "per_sq_ft": null,
-        "monthly": 1325,
-        "total_monthly": 1325
+        "monthly": 650,
+        "total_monthly": 650
       },
       {
         "unit": "Unit 155",
@@ -115,19 +115,19 @@
         "unit": "Unit 160",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 880,
+        "sq_ft": 2200,
         "per_sq_ft": null,
-        "monthly": 875,
-        "total_monthly": 875
+        "monthly": 1650,
+        "total_monthly": 1650
       },
       {
         "unit": "Unit 165",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 880,
+        "sq_ft": null,
         "per_sq_ft": null,
-        "monthly": 875,
-        "total_monthly": 875
+        "monthly": null,
+        "total_monthly": null
       }
     ],
     "2": [
@@ -142,12 +142,12 @@
       },
       {
         "unit": "Unit 210",
-        "status": "Not Available",
+        "status": "Available",
         "floor": 2,
-        "sq_ft": 22880,
+        "sq_ft": 2640,
         "per_sq_ft": null,
-        "monthly": 5725,
-        "total_monthly": 5725
+        "monthly": 1325,
+        "total_monthly": 1325
       },
       {
         "unit": "Unit 215",
