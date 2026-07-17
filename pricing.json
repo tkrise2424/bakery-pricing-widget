@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-16",
+  "last_updated": "2026-07-17",
   "property": "901 S 15th St.",
   "floors": {
     "1": [
@@ -279,25 +279,25 @@
       },
       {
         "unit": "Unit 318",
-        "status": "Not Available",
+        "status": "Available",
         "floor": 3,
         "sq_ft": 660,
         "per_sq_ft": null,
-        "monthly": 550,
-        "total_monthly": 550
+        "monthly": 600,
+        "total_monthly": 600
       },
       {
         "unit": "Unit 320",
-        "status": "Not Available",
+        "status": "Available",
         "floor": 3,
-        "sq_ft": 880,
+        "sq_ft": 750,
         "per_sq_ft": null,
-        "monthly": 725,
-        "total_monthly": 725
+        "monthly": 875,
+        "total_monthly": 875
       },
       {
         "unit": "Unit 325",
-        "status": "Not Available",
+        "status": "Available",
         "floor": 3,
         "sq_ft": 880,
         "per_sq_ft": null,
