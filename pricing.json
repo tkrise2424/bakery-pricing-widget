@@ -106,10 +106,10 @@
         "unit": "Unit 155",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 1100,
+        "sq_ft": 660,
         "per_sq_ft": null,
-        "monthly": 1275,
-        "total_monthly": 1275
+        "monthly": 775,
+        "total_monthly": 775
       },
       {
         "unit": "Unit 160",
