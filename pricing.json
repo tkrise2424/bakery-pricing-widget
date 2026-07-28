@@ -142,12 +142,12 @@
       },
       {
         "unit": "Unit 210",
-        "status": "Not Available",
+        "status": "Available",
         "floor": 2,
         "sq_ft": 2640,
         "per_sq_ft": null,
-        "monthly": 1325,
-        "total_monthly": 1325
+        "monthly": 2425,
+        "total_monthly": 2425
       },
       {
         "unit": "Unit 215",
