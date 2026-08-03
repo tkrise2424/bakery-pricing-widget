@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-02",
+  "last_updated": "2026-08-03",
   "property": "901 S 15th St.",
   "floors": {
     "1": [
@@ -135,19 +135,19 @@
         "unit": "Unit 205 - Private Office",
         "status": "Available",
         "floor": 2,
-        "sq_ft": 1100,
+        "sq_ft": 790,
         "per_sq_ft": null,
-        "monthly": 1375,
-        "total_monthly": 1375
+        "monthly": 1000,
+        "total_monthly": 1000
       },
       {
         "unit": "Unit 210",
         "status": "Available",
         "floor": 2,
-        "sq_ft": 2640,
+        "sq_ft": 2816,
         "per_sq_ft": null,
-        "monthly": 2425,
-        "total_monthly": 2425
+        "monthly": 2575,
+        "total_monthly": 2575
       },
       {
         "unit": "Unit 215",
@@ -254,10 +254,10 @@
         "unit": "Unit 305",
         "status": "Available",
         "floor": 3,
-        "sq_ft": 1100,
+        "sq_ft": 880,
         "per_sq_ft": null,
-        "monthly": 1000,
-        "total_monthly": 1000
+        "monthly": 1025,
+        "total_monthly": 1025
       },
       {
         "unit": "Unit 310",
@@ -290,10 +290,10 @@
         "unit": "Unit 320",
         "status": "Available",
         "floor": 3,
-        "sq_ft": 920,
+        "sq_ft": 880,
         "per_sq_ft": null,
-        "monthly": 1075,
-        "total_monthly": 1075
+        "monthly": 800,
+        "total_monthly": 800
       },
       {
         "unit": "Unit 325",
@@ -364,8 +364,8 @@
         "floor": 3,
         "sq_ft": 1320,
         "per_sq_ft": null,
-        "monthly": 1200,
-        "total_monthly": 1200
+        "monthly": 1550,
+        "total_monthly": 1550
       },
       {
         "unit": "Unit 355",
@@ -409,8 +409,8 @@
         "floor": 3,
         "sq_ft": 880,
         "per_sq_ft": null,
-        "monthly": 800,
-        "total_monthly": 800
+        "monthly": 1025,
+        "total_monthly": 1025
       },
       {
         "unit": "Unit 380",
