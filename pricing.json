@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-15",
+  "last_updated": "2026-08-16",
   "property": "901 S 15th St.",
   "floors": {
     "1": [
@@ -63,8 +63,8 @@
         "floor": 1,
         "sq_ft": 1010,
         "per_sq_ft": null,
-        "monthly": 1175,
-        "total_monthly": 1175
+        "monthly": 1350,
+        "total_monthly": 1350
       },
       {
         "unit": "Unit 140",
@@ -76,7 +76,7 @@
         "total_monthly": 525
       },
       {
-        "unit": "Unit 141",
+        "unit": "Unit 142",
         "status": "Available",
         "floor": 1,
         "sq_ft": 440,
@@ -90,17 +90,17 @@
         "floor": 1,
         "sq_ft": 770,
         "per_sq_ft": null,
-        "monthly": 900,
-        "total_monthly": 900
+        "monthly": 1025,
+        "total_monthly": 1025
       },
       {
         "unit": "Unit 150",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 660,
+        "sq_ft": 530,
         "per_sq_ft": null,
-        "monthly": 775,
-        "total_monthly": 775
+        "monthly": 625,
+        "total_monthly": 625
       },
       {
         "unit": "Unit 155",
@@ -108,26 +108,35 @@
         "floor": 1,
         "sq_ft": 660,
         "per_sq_ft": null,
-        "monthly": 775,
-        "total_monthly": 775
+        "monthly": 875,
+        "total_monthly": 875
+      },
+      {
+        "unit": "Unit 157",
+        "status": "Available",
+        "floor": 1,
+        "sq_ft": 420,
+        "per_sq_ft": null,
+        "monthly": 550,
+        "total_monthly": 550
       },
       {
         "unit": "Unit 160",
         "status": "Available",
         "floor": 1,
-        "sq_ft": 2200,
+        "sq_ft": 1230,
         "per_sq_ft": null,
-        "monthly": 2575,
-        "total_monthly": 2575
+        "monthly": 1425,
+        "total_monthly": 1425
       },
       {
         "unit": "Unit 165",
         "status": "Available",
         "floor": 1,
-        "sq_ft": null,
+        "sq_ft": 970,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 1300,
+        "total_monthly": 1300
       }
     ],
     "2": [
