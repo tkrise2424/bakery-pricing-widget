@@ -326,10 +326,10 @@
         "unit": "Unit 327",
         "status": "Available",
         "floor": 3,
-        "sq_ft": 310,
+        "sq_ft": 440,
         "per_sq_ft": null,
-        "monthly": 325,
-        "total_monthly": 325
+        "monthly": 475,
+        "total_monthly": 475
       },
       {
         "unit": "Unit 330",
