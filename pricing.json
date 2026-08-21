@@ -326,10 +326,10 @@
         "unit": "Unit 327",
         "status": "Available",
         "floor": 3,
-        "sq_ft": 440,
+        "sq_ft": 420,
         "per_sq_ft": null,
-        "monthly": 475,
-        "total_monthly": 475
+        "monthly": 450,
+        "total_monthly": 450
       },
       {
         "unit": "Unit 330",
@@ -344,10 +344,10 @@
         "unit": "Unit 335",
         "status": "Available",
         "floor": 3,
-        "sq_ft": 570,
+        "sq_ft": 550,
         "per_sq_ft": null,
-        "monthly": 575,
-        "total_monthly": 575
+        "monthly": 550,
+        "total_monthly": 550
       },
       {
         "unit": "Unit 340",
