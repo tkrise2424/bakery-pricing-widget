@@ -50,12 +50,12 @@
       },
       {
         "unit": "Unit 130",
-        "status": "Available",
+        "status": "Not Available",
         "floor": 1,
         "sq_ft": 880,
         "per_sq_ft": null,
-        "monthly": 1100,
-        "total_monthly": 1100
+        "monthly": 1250,
+        "total_monthly": 1250
       },
       {
         "unit": "Unit 135",
@@ -142,12 +142,12 @@
     "2": [
       {
         "unit": "Unit 205 - Private Office",
-        "status": "Available",
+        "status": "Not Available",
         "floor": 2,
         "sq_ft": 790,
         "per_sq_ft": null,
-        "monthly": 1000,
-        "total_monthly": 1000
+        "monthly": 1175,
+        "total_monthly": 1175
       },
       {
         "unit": "Unit 210",
@@ -315,12 +315,12 @@
       },
       {
         "unit": "Unit 322",
-        "status": "Available",
+        "status": "Not Available",
         "floor": 3,
         "sq_ft": 750,
         "per_sq_ft": null,
-        "monthly": 1125,
-        "total_monthly": 1125
+        "monthly": 1500,
+        "total_monthly": 1500
       },
       {
         "unit": "Unit 325",
@@ -351,7 +351,7 @@
       },
       {
         "unit": "Unit 330",
-        "status": "Available",
+        "status": "Not Available",
         "floor": 3,
         "sq_ft": 440,
         "per_sq_ft": null,
@@ -369,7 +369,7 @@
       },
       {
         "unit": "Unit 340",
-        "status": "Available",
+        "status": "Not Available",
         "floor": 3,
         "sq_ft": 1430,
         "per_sq_ft": null,
@@ -508,37 +508,37 @@
         "unit": "Unit 405",
         "status": "Available",
         "floor": 4,
-        "sq_ft": 1760,
+        "sq_ft": null,
         "per_sq_ft": null,
-        "monthly": 880,
-        "total_monthly": 880
+        "monthly": null,
+        "total_monthly": null
       },
       {
         "unit": "Unit 410",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 440,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 220,
+        "total_monthly": 220
       },
       {
         "unit": "Unit 415",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 22880,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 11440,
+        "total_monthly": 11440
       },
       {
         "unit": "Unit 420",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 220,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 110,
+        "total_monthly": 110
       },
       {
         "unit": "Unit 425",
@@ -553,10 +553,10 @@
         "unit": "Unit 430",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 220,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 110,
+        "total_monthly": 110
       },
       {
         "unit": "Unit 435",
@@ -571,10 +571,10 @@
         "unit": "Unit 440",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 440,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 220,
+        "total_monthly": 220
       },
       {
         "unit": "Unit 445",
@@ -589,10 +589,10 @@
         "unit": "Unit 450",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 220,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 110,
+        "total_monthly": 110
       },
       {
         "unit": "Unit 455",
@@ -607,10 +607,10 @@
         "unit": "Unit 460",
         "status": "Available",
         "floor": 4,
-        "sq_ft": null,
+        "sq_ft": 220,
         "per_sq_ft": null,
-        "monthly": null,
-        "total_monthly": null
+        "monthly": 110,
+        "total_monthly": 110
       }
     ],
     "Lot": [
