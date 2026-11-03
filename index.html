@@ -43,6 +43,7 @@ body{font-family:'Roboto',sans-serif;background:#f4f4f4;color:#0D0D0D;padding:24
 .card-price small{font-size:.8rem;font-weight:400;color:#686E6E}
 .card-price-na{font-size:.88rem;color:#686E6E;font-style:italic}
 
+.floor-note{background:#fff;border:1.5px dashed #d8d8d8;border-radius:10px;padding:28px 24px;text-align:center;color:#686E6E;font-size:.95rem}
 .last-updated{text-align:center;font-size:.75rem;color:#bbb;margin-top:28px}
 
 @media(max-width:500px){
@@ -106,8 +107,9 @@ function render() {
 
   for (const [floorKey, units] of Object.entries(pricingData.floors)) {
     if (currentFloor !== 'all' && currentFloor !== floorKey) continue;
+    const note = (pricingData.floor_notes || {})[floorKey];
     let filtered = availOnly ? units.filter(u => u.status === 'Available') : units;
-    if (!filtered.length) continue;
+    if (!filtered.length && !note && currentFloor === 'all') continue;
 
     const section = document.createElement('div');
     section.className = 'floor-section';
@@ -116,6 +118,15 @@ function render() {
     label.className = 'floor-label';
     label.textContent = FLOOR_LABELS[floorKey] || 'Floor ' + floorKey;
     section.appendChild(label);
+
+    if (note || !filtered.length) {
+      const empty = document.createElement('div');
+      empty.className = 'floor-note';
+      empty.textContent = note || 'No units currently available';
+      section.appendChild(empty);
+      container.appendChild(section);
+      continue;
+    }
 
     const grid = document.createElement('div');
     grid.className = 'units-grid';

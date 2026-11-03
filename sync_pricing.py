@@ -7,6 +7,12 @@ FILE_ID = "1Ij8A3RI_UYVBfFB3YbXH6uKdXrAg3voG32LzN2pkGz8"
 SHEET_GID = "10544563"
 CSV_URL = f"https://docs.google.com/spreadsheets/d/{FILE_ID}/export?format=csv&gid={SHEET_GID}"
 
+# Floors that should display an empty-state message instead of unit cards,
+# regardless of what the sheet says. Remove an entry to show the sheet data again.
+FLOOR_NOTES = {
+    "4": "No units currently available",
+}
+
 def to_float(val):
     if val is None or val == "":
         return None
@@ -100,7 +106,7 @@ if not addons:
 
 floors = {}
 for fk in ["1", "2", "3", "4"]:
-    floors[fk] = units_by_floor.get(fk, [])
+    floors[fk] = [] if fk in FLOOR_NOTES else units_by_floor.get(fk, [])
 if lot_items:
     floors["Lot"] = lot_items
 
@@ -108,6 +114,7 @@ pricing = {
     "last_updated": str(date.today()),
     "property": "901 S 15th St.",
     "floors": floors,
+    "floor_notes": FLOOR_NOTES,
     "addons": addons
 }
 
