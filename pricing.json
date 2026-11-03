@@ -525,6 +525,9 @@
       }
     ]
   },
+  "floor_notes": {
+    "4": "No units currently available"
+  },
   "addons": [
     {
       "name": "Extra FOB",
@@ -538,8 +541,5 @@
       "name": "Mailbox",
       "monthly": 25
     }
-  ],
-  "floor_notes": {
-    "4": "No units currently available"
-  }
+  ]
 }
