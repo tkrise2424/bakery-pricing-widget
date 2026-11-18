@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17",
+  "last_updated": "2026-11-18",
   "property": "901 S 15th St.",
   "floors": {
     "1": [
@@ -499,8 +499,8 @@
         "floor": 3,
         "sq_ft": 1410,
         "per_sq_ft": null,
-        "monthly": 2125,
-        "total_monthly": 2125
+        "monthly": 1525,
+        "total_monthly": 1525
       }
     ],
     "4": [],
